@@ -3,8 +3,8 @@
 window.onload = function(){//onload is a property/listener of window. Waiting to have functions
   //assigned to them...so 'Window, onload I want you to run this function!'
  
-  allQuotes = quoteLister(quotes)
-  quoteAdder(allQuotes) 
+  allQuotes = createQuoteElements(quotes)
+  addQuoteElementsToPage(allQuotes) 
 
   var form = document.getElementById('newQuoteForm')
   console.log('form', form)
@@ -16,7 +16,7 @@ window.onload = function(){//onload is a property/listener of window. Waiting to
     var anotherQuote = newQuote(text, author, Quote);
     
     var quoteElement = createQuoteElement(anotherQuote);
-    updateQuoteDisplay(quoteElement);
+    appendQuoteToPage(quoteElement);
 
   }
 
@@ -37,7 +37,7 @@ window.onload = function(){//onload is a property/listener of window. Waiting to
 
   var quotes = [quote1, quote2, quote3, quote4]
 
-  var quoteLister = function(array){
+  var createQuoteElements = function(array){
     var tempArray = []
     for (quote of array){
       var quoteHolder = createArticleElement();
@@ -54,7 +54,7 @@ window.onload = function(){//onload is a property/listener of window. Waiting to
   }
 
 
-var quoteAdder = function(array){
+var addQuoteElementsToPage = function(array){
   var quoteSection = document.getElementById('quotes')
   for (item of array){
     quoteSection.appendChild(item);
@@ -88,7 +88,7 @@ var createQuoteElement = function(quote){
   return quoteHolder;
 }
 
-var updateQuoteDisplay = function(quoteElement){
+var appendQuoteToPage = function(quoteElement){
   var quoteSection = document.getElementById('quotes');
   quoteSection.appendChild(quoteElement);
 }
